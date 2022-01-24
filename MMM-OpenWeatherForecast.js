@@ -275,10 +275,10 @@ Module.register("MMM-OpenWeatherForecast", {
 
 	notificationReceived: function (notification, payload, sender) {
 	 if (notification === "INDOOR_TEMPERATURE") {
-			this.indoor.temperature = this.roundValue(payload);
+			this.indoor.temperature = payload;
 			this.updateDom(this.config.updateFadeSpeed);
 		} else if (notification === "INDOOR_HUMIDITY") {
-			this.indoor.humidity = this.roundValue(payload);
+			this.indoor.humidity = payload;
 			this.updateDom(this.config.updateFadeSpeed);
 		}
 	},
