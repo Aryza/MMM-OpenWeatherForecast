@@ -190,7 +190,10 @@ Module.register("MMM-OpenWeatherForecast", {
     this.iconCache = [];
     this.iconIdCounter = 0;
     this.formattedWeatherData = null;
-    this.indoor = null;
+    this.indoor = {
+      temperature: null,
+      humidity: null
+    };
 
     /*
       Optionally, Dark Sky's Skycons animated icon
