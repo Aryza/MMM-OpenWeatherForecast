@@ -19,28 +19,26 @@
         </span>
 
       {# -------------- Current Indoor Conditions -------------- #}
-      <div class="current temperature indoor light ">
+      <div class="current-indoor-wrapper medium light ">
         {% if config.showIndoorTemperature and indoor.temperature %}
-            <div>
-                <span class="fa fa-home"></span>
-                <span class="bright">
-                    {{ indoor.temperature }}
-                </span>
-            </div>
+          <span class="current-conditions-wrapper indoor-temperature"> 
+            <span class="fa fa-home"></span>
+            <span class="bright">
+                {{ indoor.temperature }}
+            </span>
+          </span>
         {% endif %}
         {% if config.showIndoorHumidity and indoor.humidity %}
-            <div>
-                <span class="fa fa-tint"></span>
-                <span class="bright">
-                    {{ indoor.humidity }} %
-                </span>
-            </div>
+          <span class="current-conditions-wrapper indoor-humidity"> 
+            <span class="fa fa-tint"></span>
+            <span class="bright">
+                {{ indoor.humidity }}
+            </span>
+          </span>
         {% endif %}
       </div>
       {# -------------- End Current Indoor Conditions -------------- #}
-      
-
-
+    
       </div>
     {% endif %}
 
