@@ -24,7 +24,7 @@
             <div>
                 <span class="fa fa-home"></span>
                 <span class="bright">
-                    {{ indoor.temperature | roundValue | unit("temperature") | decimalSymbol }}
+                    {{ indoor.temperature }}
                 </span>
             </div>
         {% endif %}
@@ -32,7 +32,7 @@
             <div>
                 <span class="fa fa-tint"></span>
                 <span class="bright">
-                    {{ indoor.humidity | roundValue | unit("humidity") | decimalSymbol }}
+                    {{ indoor.humidity }} %
                 </span>
             </div>
         {% endif %}
