@@ -70,6 +70,9 @@ Module.register("MMM-OpenWeatherForecast", {
     showSummary: true,
 
     showCurrentConditions: true,
+    showIndoorTemperature: true,
+    showIndoorHumidity: true,
+
     showExtraCurrentConditions: true,
     extraCurrentConditions: {
       highLowTemp: true,
@@ -159,6 +162,7 @@ Module.register("MMM-OpenWeatherForecast", {
       loading: this.formattedWeatherData == null ? true : false,
       config: this.config,
       forecast: this.formattedWeatherData,
+      indoor: this.indoor,
       inlineIcons : {
         rain: this.generateIconSrc("i-rain"),
         wind: this.generateIconSrc("i-wind"),
@@ -186,6 +190,7 @@ Module.register("MMM-OpenWeatherForecast", {
     this.iconCache = [];
     this.iconIdCounter = 0;
     this.formattedWeatherData = null;
+    this.indoor = null;
 
     /*
       Optionally, Dark Sky's Skycons animated icon
@@ -267,6 +272,16 @@ Module.register("MMM-OpenWeatherForecast", {
     });
 
   },
+
+	notificationReceived: function (notification, payload, sender) {
+	 if (notification === "INDOOR_TEMPERATURE") {
+			this.indoor.temperature = this.roundValue(payload);
+			this.updateDom(this.config.updateFadeSpeed);
+		} else if (notification === "INDOOR_HUMIDITY") {
+			this.indoor.humidity = this.roundValue(payload);
+			this.updateDom(this.config.updateFadeSpeed);
+		}
+	},
 
   socketNotificationReceived: function(notification, payload) {
 

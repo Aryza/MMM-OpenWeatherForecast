@@ -17,6 +17,30 @@
           {% endif %}
           <span class="current temperature bright large light">{{ forecast.currently.temperature }}</span>
         </span>
+
+      {# -------------- Current Indoor Conditions -------------- #}
+      <div class="current temperature indoor light ">
+        {% if config.showIndoorTemperature and indoor.temperature %}
+            <div>
+                <span class="fa fa-home"></span>
+                <span class="bright">
+                    {{ indoor.temperature | roundValue | unit("temperature") | decimalSymbol }}
+                </span>
+            </div>
+        {% endif %}
+        {% if config.showIndoorHumidity and indoor.humidity %}
+            <div>
+                <span class="fa fa-tint"></span>
+                <span class="bright">
+                    {{ indoor.humidity | roundValue | unit("humidity") | decimalSymbol }}
+                </span>
+            </div>
+        {% endif %}
+      </div>
+      {# -------------- End Current Indoor Conditions -------------- #}
+      
+
+
       </div>
     {% endif %}
 
